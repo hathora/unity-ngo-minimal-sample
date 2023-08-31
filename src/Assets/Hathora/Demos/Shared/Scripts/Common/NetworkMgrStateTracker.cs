@@ -126,9 +126,6 @@ namespace Hathora.Demos.Shared.Scripts.Common
 
         protected virtual void OnClientConnecting()
         {
-            if (!IsOwner)
-                return;
-            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientConnecting)}");
             
@@ -144,9 +141,6 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// </summary>
         protected virtual void OnClientStarting()
         {
-            if (!IsOwner)
-                return;
-            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStarting)}");
             
@@ -157,9 +151,6 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <summary>We just started and can now run net code</summary>
         protected virtual void OnClientStarted()
         {
-            if (!IsOwner)
-                return;
-            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStarted)}");
 
@@ -170,9 +161,6 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <summary>We were disconnected from net code</summary>
         protected virtual void OnClientStopped()
         {
-            if (!IsOwner)
-                return;
-            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStopped)}");
             
@@ -187,9 +175,6 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <param name="_friendlyReason"></param>
         protected virtual void OnStartClientFail(string _friendlyReason)
         {
-            if (!IsOwner)
-                return;
-            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}.{nameof(OnClientStopped)}] {_friendlyReason}");
             
