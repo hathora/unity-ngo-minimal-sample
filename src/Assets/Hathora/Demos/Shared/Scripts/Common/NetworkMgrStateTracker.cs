@@ -126,7 +126,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
 
         protected virtual void OnClientConnecting()
         {
-            if (!IsLocalPlayer)
+            if (!IsOwner)
                 return;
             
             if (verboseLogs)
@@ -144,7 +144,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// </summary>
         protected virtual void OnClientStarting()
         {
-            if (!IsLocalPlayer)
+            if (!IsOwner)
                 return;
             
             if (verboseLogs)
@@ -157,7 +157,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <summary>We just started and can now run net code</summary>
         protected virtual void OnClientStarted()
         {
-            if (!IsLocalPlayer)
+            if (!IsOwner)
                 return;
             
             if (verboseLogs)
@@ -170,7 +170,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <summary>We were disconnected from net code</summary>
         protected virtual void OnClientStopped()
         {
-            if (!IsLocalPlayer)
+            if (!IsOwner)
                 return;
             
             if (verboseLogs)
@@ -187,7 +187,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <param name="_friendlyReason"></param>
         protected virtual void OnStartClientFail(string _friendlyReason)
         {
-            if (!IsLocalPlayer)
+            if (!IsOwner)
                 return;
             
             if (verboseLogs)
