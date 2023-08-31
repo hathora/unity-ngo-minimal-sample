@@ -3,6 +3,7 @@
 using System;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Core.Scripts.Runtime.Client;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Hathora.Demos.Shared.Scripts.Common
@@ -15,8 +16,9 @@ namespace Hathora.Demos.Shared.Scripts.Common
     /// - Contains funcs like: OnClientStopped, OnClientStarted.
     /// - Contains events like: OnClientStoppedEvent, OnClientStartedEvent.
     /// - Tracks `ClientState` like: Stopped, Starting, Started.
+    /// - (!) Unlike `hathora-unity`, this repo uses Unity.Netcode.
     /// </summary>
-    public abstract class NetworkMgrStateTracker : MonoBehaviour
+    public abstract class NetworkMgrStateTracker : NetworkBehaviour
     {
         #region Uncomment for child architecture guide
         // protected abstract void SetSingleton();
@@ -36,6 +38,24 @@ namespace Hathora.Demos.Shared.Scripts.Common
 
         /// <summary>When a connection stops, errs out or we get d/c'd, what should we show to clients?</summary>
         protected const string CONNECTION_STOPPED_FRIENDLY_STR = "Connection Stopped";
+        
+        /// <summary>
+        /// States the local connection can be in, following FishNet's standard.
+        /// </summary>
+        public enum LocalConnectionState : byte
+        {
+            /// <summary>Connection is fully stopped.</summary>
+            Stopped = 0,
+            
+            /// <summary>Connection is starting but not yet established.</summary>
+            Starting = 1,
+            
+            /// <summary>Connection is established.</summary>
+            Started = 2,
+            
+            /// <summary>Connection is stopping.</summary>
+            Stopping = 3,
+        }
         #endregion // Core vars
 
         
@@ -106,6 +126,9 @@ namespace Hathora.Demos.Shared.Scripts.Common
 
         protected virtual void OnClientConnecting()
         {
+            if (!IsLocalPlayer)
+                return;
+            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientConnecting)}");
             
@@ -121,6 +144,9 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// </summary>
         protected virtual void OnClientStarting()
         {
+            if (!IsLocalPlayer)
+                return;
+            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStarting)}");
             
@@ -131,6 +157,9 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <summary>We just started and can now run net code</summary>
         protected virtual void OnClientStarted()
         {
+            if (!IsLocalPlayer)
+                return;
+            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStarted)}");
 
@@ -141,6 +170,9 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <summary>We were disconnected from net code</summary>
         protected virtual void OnClientStopped()
         {
+            if (!IsLocalPlayer)
+                return;
+            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStopped)}");
             
@@ -155,6 +187,9 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <param name="_friendlyReason"></param>
         protected virtual void OnStartClientFail(string _friendlyReason)
         {
+            if (!IsLocalPlayer)
+                return;
+            
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}.{nameof(OnClientStopped)}] {_friendlyReason}");
             
