@@ -15,7 +15,7 @@ namespace HathoraNgo
     ///   * Can initialize or stop NetworkManager connections.
     ///   * Tells base to log + trigger OnDone() events other scripts subcribe to.
     /// - Base contains funcs like: StartServer, StartClient, StartHost.
-    /// - Base contains events like: OnClientStarted, OnClientStopped.
+    /// - Base contains events like: OnLocalClientStarted, OnClientStopped.
     /// - Base tracks `ClientState` like: Stopped, Starting, Started.
     /// - (!) The current state of NGO is still early; they do not yet support WebGL or host names.
     /// </summary>
@@ -192,7 +192,7 @@ namespace HathoraNgo
             string transportName = transport.GetType().Name;
             Debug.Log($"[{logPrefix} Connecting to `{ipPort}` via`{transportName}` transport");
             
-            base.OnClientConnecting(); // => callback @ OnClientConected() || OnStartClientFail()
+            base.OnClientConnecting(); // => callback @ OnClientConected() || OnLocalStartClientFail()
             bool startedConnection = netMgr.StartClient();
             return startedConnection;
         }

@@ -63,10 +63,10 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
             HathoraClientMgr.OnGetActiveConnectionInfoDoneEvent += OnGetActiveConnectionInfoDone;
             
             // Sub to NetworkManager events
-            // NetworkMgrStateTracker.OnClientStartingEvent -= OnClientStarting; // TODO: Add to OnDestroy, if implemented
-            NetworkMgrStateTracker.OnClientStartedEvent += OnClientStarted;
-            NetworkMgrStateTracker.OnClientStoppedEvent += OnClientStopped;
-            NetworkMgrStateTracker.OnStartClientFailEvent += OnStartClientFail;
+            // NetworkMgrStateTracker.OnLocalClientStartingEvent -= OnClientStarting; // TODO: Add to OnDestroy, if implemented
+            NetworkMgrStateTracker.OnLocalClientStartedEvent += OnLocalClientStarted;
+            NetworkMgrStateTracker.OnLocalClientStoppedEvent += OnClientStopped;
+            NetworkMgrStateTracker.OnLocalStartClientFailEvent += OnLocalStartClientFail;
         }
         #endregion // Init
         
@@ -133,7 +133,7 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
                 onGetActiveConnectionInfoFail();
         }
         
-        protected virtual void OnClientStarted()
+        protected virtual void OnLocalClientStarted()
         {
             sdkDemoUi.JoiningLobbyStatusTxt.text = "<color=green>Connected</color>";
         }
@@ -153,7 +153,7 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
 
         /// <summary>Failed, after a callback from clicking a "Client" net code btn.</summary>
         /// <param name="_friendlyErr"></param>
-        protected virtual void OnStartClientFail(string _friendlyErr)
+        protected virtual void OnLocalStartClientFail(string _friendlyErr)
         {
             Debug.Log($"[HathoraNetUiBase] OnNetStartClientFail: {_friendlyErr}");
 
@@ -563,10 +563,10 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
             HathoraClientMgr.OnGetActiveConnectionInfoDoneEvent -= OnGetActiveConnectionInfoDone;
             
             // Unsub to NetworkManager events
-            // NetworkMgrStateTracker.OnClientStartingEvent -= OnClientStarting; // TODO 
-            NetworkMgrStateTracker.OnClientStartedEvent -= OnClientStarted;
-            NetworkMgrStateTracker.OnClientStoppedEvent -= OnClientStopped;
-            NetworkMgrStateTracker.OnStartClientFailEvent -= OnStartClientFail;
+            // NetworkMgrStateTracker.OnLocalClientStartingEvent -= OnClientStarting; // TODO 
+            NetworkMgrStateTracker.OnLocalClientStartedEvent -= OnLocalClientStarted;
+            NetworkMgrStateTracker.OnLocalClientStoppedEvent -= OnClientStopped;
+            NetworkMgrStateTracker.OnLocalStartClientFailEvent -= OnLocalStartClientFail;
         }
 
         protected virtual void OnDestroy() => UnsubToClientMgrEvents();

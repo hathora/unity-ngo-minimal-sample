@@ -13,8 +13,8 @@ namespace Hathora.Demos.Shared.Scripts.Common
     /// - To use, inherit this class and find your NetworkManager state callbacks.
     ///   * On state change, call the common base callback to trigger logs + events.
     ///   * Every NetworkManager tracks states differently, hence this class being abstract.
-    /// - Contains funcs like: OnClientStopped, OnClientStarted.
-    /// - Contains events like: OnClientStoppedEvent, OnClientStartedEvent.
+    /// - Contains funcs like: OnClientStopped, OnLocalClientStarted.
+    /// - Contains events like: OnLocalClientStoppedEvent, OnLocalClientStartedEvent.
     /// - Tracks `ClientState` like: Stopped, Starting, Started.
     /// - (!) Unlike `hathora-unity`, this repo uses Unity.Netcode.
     /// </summary>
@@ -59,24 +59,24 @@ namespace Hathora.Demos.Shared.Scripts.Common
         #endregion // Core vars
 
         
-        #region Client Events
+        #region Local Client Events
         /// <summary>Event triggers when a NetworkManager client is attempting to connect.</summary>
-        public static event Action OnClientConnectingEvent;
+        public static event Action OnLocalClientConnectingEvent;
         
         /// <summary>Event triggers when a NetworkManager client is connected and starting (but not yet started).</summary>
-        public static event Action OnClientStartingEvent;
+        public static event Action OnLocalClientStartingEvent;
         
         /// <summary>Event triggers when a NetworkManager client started.</summary>
         /// <returns>roomId, friendlyRegion</returns>
-        public static event Action OnClientStartedEvent;
+        public static event Action OnLocalClientStartedEvent;
 
         /// <summary>Event triggers when a NetworkManager client stopped (or disconnected).</summary>
-        public static Action OnClientStoppedEvent;
+        public static Action OnLocalClientStoppedEvent;
         
         /// <summary>Event triggers when a NetworkManager client failed to start (with UI-friendly err).</summary>
         /// <returns>friendlyReason</returns>
-        public static event Action<string> OnStartClientFailEvent;
-        #endregion // Client Events
+        public static event Action<string> OnLocalStartClientFailEvent;
+        #endregion // Local Client Events
         
         
         #region Init
@@ -130,7 +130,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientConnecting)}");
             
             ClientState = ClientTrackedState.Connecting;
-            OnClientConnectingEvent?.Invoke(); 
+            OnLocalClientConnectingEvent?.Invoke(); 
         }
         
         /// <summary>
@@ -145,7 +145,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStarting)}");
             
             ClientState = ClientTrackedState.Starting;
-            OnClientStartingEvent?.Invoke();
+            OnLocalClientStartingEvent?.Invoke();
         }
 
         /// <summary>We just started and can now run net code</summary>
@@ -155,7 +155,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStarted)}");
 
             ClientState = ClientTrackedState.Started;
-            OnClientStartedEvent?.Invoke();
+            OnLocalClientStartedEvent?.Invoke();
         }
 
         /// <summary>We were disconnected from net code</summary>
@@ -165,12 +165,12 @@ namespace Hathora.Demos.Shared.Scripts.Common
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnClientStopped)}");
             
             ClientState = ClientTrackedState.Stopped;
-            OnClientStoppedEvent?.Invoke();
+            OnLocalClientStoppedEvent?.Invoke();
         }
         
         /// <summary>
         /// Tried to connect to a Server as a Client, but failed.
-        /// Triggers OnStartClientFailEvent -> OnClientStopped().
+        /// Triggers OnLocalStartClientFailEvent -> OnClientStopped().
         /// </summary>
         /// <param name="_friendlyReason"></param>
         protected virtual void OnStartClientFail(string _friendlyReason)
@@ -178,7 +178,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
             if (verboseLogs)
                 Debug.Log($"[{nameof(NetworkMgrStateTracker)}.{nameof(OnClientStopped)}] {_friendlyReason}");
             
-            OnStartClientFailEvent?.Invoke(_friendlyReason);
+            OnLocalStartClientFailEvent?.Invoke(_friendlyReason);
             OnClientStopped();
         }
         #endregion // Client State
