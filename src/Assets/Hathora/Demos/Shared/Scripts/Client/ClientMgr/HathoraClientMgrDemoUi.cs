@@ -16,8 +16,9 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
 {
     /// <summary>
     /// [SDK DEMO] Handles the non-Player UI so we can keep the logic separate.
-    /// Generally, this is going to be pre-connection UI such as create/join lobbies.
-    /// UI OnEvent entry points from Buttons start here.
+    /// - Generally, this is going to be pre-connection UI such as create/join lobbies.
+    /// - UI OnEvent entry points from Buttons start here.
+    /// - TODO: Mv Hello World specific scripts to HathoraClientMgrHeloWorldDemoUi.
     /// </summary>
     public abstract class HathoraClientMgrDemoUi : MonoBehaviour
     {

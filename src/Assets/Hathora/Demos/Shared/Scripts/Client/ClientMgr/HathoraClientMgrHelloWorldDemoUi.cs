@@ -7,8 +7,10 @@ using UnityEngine.UI;
 namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
 {
     /// <summary>
-    /// Only for use with the Hello World UI. Most component events are
-    /// currently handled within component Event click logic (unlike the SDK demo).
+    /// [HELLO WORLD DEMO] Handles UI to keep logic separate.
+    /// - Container for UI, notably ClientConnectInputField (for custom host:port).
+    /// - Hides "Start Server" btn on WebGL.
+    /// - (!) There currently is !Ngo support for WebGL, but there will be soon.
     /// </summary>
     public class HathoraClientMgrHelloWorldDemoUi : MonoBehaviour
     {
