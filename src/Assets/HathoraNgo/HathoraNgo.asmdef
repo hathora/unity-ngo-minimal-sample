@@ -1,0 +1,14 @@
+{
+    "name": "HathoraNgo",
+    "rootNamespace": "HathoraNgo",
+    "references": ["GUID:85f5a5b91903f7f4f83b701844c24625","GUID:0e3fc80fc04a96743bef4dc13d47ec4e"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
