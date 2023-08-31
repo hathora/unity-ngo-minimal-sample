@@ -60,8 +60,7 @@ namespace HathoraNgo
         private void subToNgoStateEvents()
         {
             // General
-            netMgr.OnTransportFailure += () => 
-                OnStartClientFail("Transport Error");
+            netMgr.OnTransportFailure += OnClientTransportFailureWrapper;
             
             // IsLocalPlayer Client events >>
             netMgr.OnClientStarted += OnClientStarted;
@@ -73,6 +72,10 @@ namespace HathoraNgo
             // netMgr.OnServerStarted += () =>
             // netMgr.OnServerStopped += (bool _isClient) => 
         }
+        
+        /// <summary>Wrapper needs to add `friendlyReason` err string</summary>
+        private void OnClientTransportFailureWrapper() => 
+            OnStartClientFail("Transport Error");
 
         /// <summary>Wrapper considers NGO's `isServer` arg</summary>
         /// <param name="_isServer"></param>
@@ -258,18 +261,17 @@ namespace HathoraNgo
                 return; // Perhaps already destroyed
             
             // General
-            netMgr.OnTransportFailure -= () => 
-                OnStartClientFail("Transport Error");
-        
+            netMgr.OnTransportFailure -= OnClientTransportFailureWrapper;
+            
             // IsLocalPlayer Client events >>
             netMgr.OnClientStarted -= OnClientStarted;
-            netMgr.OnClientStopped -= (bool _isServer) => OnClientStopped();
-            netMgr.OnClientConnectedCallback -= (ulong _clientId) => OnClientStarting();
-            netMgr.OnClientDisconnectCallback -= (ulong _clientId) => OnClientStopped();
-        
+            netMgr.OnClientStopped -= OnClientStoppedWrapper;
+            netMgr.OnClientConnectedCallback -= OnClientStartingWrapper;
+            netMgr.OnClientDisconnectCallback -= OnClientStoppedWrapper;
+            
             //// Server events >> TODO
-            // netMgr.OnServerStarted += () =>
-            // netMgr.OnServerStopped += (bool _isClient) => 
+            // netMgr.OnServerStarted -= () =>
+            // netMgr.OnServerStopped -= (bool _isClient) => 
         }
     }
 }
