@@ -669,8 +669,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1194941214106636806}
-  - component: {fileID: 8635938460796269351}
-  - component: {fileID: 8635938460796269354}
   - component: {fileID: 8635938460796269355}
   - component: {fileID: 8635938460796269356}
   m_Layer: 0
@@ -2845,32 +2843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d38579494d78a4da2e60be45bff4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8635938460796269351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194941214106636804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa31be64a6c5034e94f8f234539d631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mockArgsInEditor: 0
---- !u!114 &8635938460796269354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194941214106636804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f6013a6e61c214fadd13e0bb0cf12e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  verboseLogs: 1
 --- !u!114 &8635938460796269355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2889,7 +2861,8 @@ MonoBehaviour:
     PlayerPrefab: {fileID: 5090726670223187118, guid: f45c1d3c08536fa4a947fb2e1b4f3cc1,
       type: 3}
     Prefabs:
-      NetworkPrefabsLists: []
+      NetworkPrefabsLists:
+      - {fileID: 11400000, guid: 39a2692fa7c6f8a4c9010e321b632e6f, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
