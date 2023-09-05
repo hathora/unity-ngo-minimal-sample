@@ -229,8 +229,8 @@ namespace HathoraNgo
         /// </returns>
         public bool StartClientFromHathoraLobbySession()
         {
-            string hostPort = GetHathoraSessionHostPort();
-            return StartClient(hostPort);
+            string ipPort = GetHathoraSessionHostPort(_useIpInsteadOfHost: true); // NGO will reject host names
+            return StartClient(ipPort);
         }
         
         /// <summary>Starts a NetworkManager Client.</summary>
