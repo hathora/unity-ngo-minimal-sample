@@ -210,6 +210,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6730436420086812906}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &930627567 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4194415799127604030, guid: 127b03e81323ad14ca3d3a53f8f2eded,
+    type: 3}
+  m_PrefabInstance: {fileID: 4194415799525400729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1052597532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4194415799541431207, guid: 127b03e81323ad14ca3d3a53f8f2eded,
+    type: 3}
+  m_PrefabInstance: {fileID: 4194415799525400729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1149734047
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +234,7 @@ GameObject:
   - component: {fileID: 1149734049}
   - component: {fileID: 1149734048}
   m_Layer: 0
-  m_Name: NgoStateMgr
+  m_Name: NgoStateManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,6 +429,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1684674994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4194415798673906220, guid: 127b03e81323ad14ca3d3a53f8f2eded,
+    type: 3}
+  m_PrefabInstance: {fileID: 4194415799525400729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1807220748 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6730436419053282245, guid: e4dcbec2e4ad0514a94f944ced942c4d,
@@ -810,6 +828,7 @@ GameObject:
   - component: {fileID: 8635938460796269355}
   - component: {fileID: 8635938460796269356}
   - component: {fileID: 8635938460796269357}
+  - component: {fileID: 8635938460796269358}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -3764,6 +3783,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mockArgsInEditor: 0
+--- !u!114 &8635938460796269358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194941214106636804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ac98f365c604044b7b56d3b7c63a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpawnPoints:
+  - {fileID: 930627567}
+  - {fileID: 1684674994}
+  - {fileID: 1052597532}
 --- !u!1001 &8791311662459583026
 PrefabInstance:
   m_ObjectHideFlags: 0

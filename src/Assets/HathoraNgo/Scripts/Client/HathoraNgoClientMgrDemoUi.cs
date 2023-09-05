@@ -4,9 +4,8 @@ using System.Text.RegularExpressions;
 using Hathora.Core.Scripts.Runtime.Common.Utils;
 using Hathora.Demos.Shared.Scripts.Client.ClientMgr;
 using UnityEngine.Assertions;
-using UnityEngine.EventSystems;
 
-namespace HathoraNgo
+namespace HathoraNgo.Client
 {
     /// <summary>
     /// Handles the non-Player UI so we can keep the logic separate.

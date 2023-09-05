@@ -62,32 +62,37 @@ namespace HathoraNgo
             // General
             netMgr.OnTransportFailure += OnClientTransportFailureWrapper;
             
-            // IsLocalPlayer Client events >>
+            // IsLocalPlayer Client events >> In order of events fired
+            // (!) bug: In NGO "Host" mode, "started" seems to unexpectedly trigger before "starting"
             netMgr.OnClientStarted += OnClientStarted;
-            netMgr.OnClientStopped += OnClientStoppedWrapper;
             netMgr.OnClientConnectedCallback += OnClientStartingWrapper;
+            netMgr.OnClientStopped += OnClientStoppedWrapper;
             netMgr.OnClientDisconnectCallback += OnClientStoppedWrapper;
             
-            //// Server events >> TODO
-            // netMgr.OnServerStarted += () =>
-            // netMgr.OnServerStopped += (bool _isClient) => 
+            // Server events >> In order of events fired
+            netMgr.OnServerStarted += OnServerStarted;
+            netMgr.OnServerStopped += OnServerStopped;
         }
-        
+
+        private void OnServerStarted()
+        {
+        }
+
         /// <summary>Wrapper needs to add `friendlyReason` err string</summary>
         private void OnClientTransportFailureWrapper() => 
             OnStartClientFail("Transport Error");
 
-        /// <summary>Wrapper considers NGO's `isServer` arg</summary>
+        /// <summary>Wrapper considers NGO's `OnClientStopped(isServer)`</summary>
         /// <param name="_isServer"></param>
         private void OnClientStoppedWrapper(bool _isServer) => OnClientStopped();
         
-        /// <summary>Wrapper considers NGO's `isServer` arg</summary>
+        /// <summary>Wrapper considers NGO's `OnClientDisconnectedCallback(clientId)`</summary>
+        /// <param name="_clientId"></param>
+        private void OnClientStoppedWrapper(ulong _clientId) => OnClientStopped();
+        
+        /// <summary>Wrapper considers NGO's `OnClientConnectedCallback(clientId)`</summary>
         /// <param name="_clientId"></param>
         private void OnClientStartingWrapper(ulong _clientId) => OnClientStarting();
-        
-        /// <summary>Wrapper considers NGO's `isServer` arg</summary>
-        /// <param name="_clientId"></param>
-        private void OnClientStoppedWrapper(ulong _clientId) => OnClientStarting();
         #endregion Init -> // Events
 
         
