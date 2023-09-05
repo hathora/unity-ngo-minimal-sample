@@ -115,8 +115,22 @@ namespace HathoraNgo
 
         /// <summary>Stops a NetworkManager local Server. Discards all queued messages.</summary>
         public void StopServer() =>
-            netMgr.Shutdown(discardMessageQueue: true);
+            stopClientServerHost();
         #endregion // NetworkManager Server
+        
+        
+        #region NetworkManager Host
+        // ##################################################################################
+        // In most NetCode, you don't need to handle host (StartServer->StartClient is same).
+        // However, in NGO: This is not the case.
+        // ##################################################################################
+        
+        public void StartHost() =>
+            netMgr.StartHost();
+        
+        public void StopHost() =>
+            stopClientServerHost();
+        #endregion NetworkManager Host
         
         
         #region NetworkManager Client
@@ -216,7 +230,7 @@ namespace HathoraNgo
         
         /// <summary>Starts a NetworkManager Client.</summary>
         public void StopClient() =>
-            netMgr.Shutdown(discardMessageQueue: true);
+            stopClientServerHost();
         
         /// <summary>We're about to connect to a server as a Client - ensure we're ready.</summary>
         /// <returns>isValid</returns>
@@ -232,7 +246,7 @@ namespace HathoraNgo
 
             // Validate state: We should be stopped (so we don't connect 2x) -> Stop connection 1st?
             if (netMgr.IsConnectedClient)
-                netMgr.Shutdown(discardMessageQueue: true);
+                stopClientServerHost();
 
             #region TODO: Validate WebGL Transport
 //             SomeWebglTransport someWebglTransport = transport as SomeWebglTransport; 
@@ -254,6 +268,10 @@ namespace HathoraNgo
         #endregion // NetworkManager Client
 
 
+        #region Cleanup
+        private void stopClientServerHost() => 
+            netMgr.Shutdown(discardMessageQueue: true);
+        
         /// <summary>We must unsubscribe to events originally subbed to @ Awake</summary>
         private void OnDestroy()
         {
@@ -273,5 +291,6 @@ namespace HathoraNgo
             // netMgr.OnServerStarted -= () =>
             // netMgr.OnServerStopped -= (bool _isClient) => 
         }
+        #endregion // Cleanup
     }
 }

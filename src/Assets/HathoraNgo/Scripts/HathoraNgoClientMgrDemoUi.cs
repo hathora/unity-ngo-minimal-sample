@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using Hathora.Core.Scripts.Runtime.Common.Utils;
 using Hathora.Demos.Shared.Scripts.Client.ClientMgr;
 using UnityEngine.Assertions;
+using UnityEngine.EventSystems;
 
 namespace HathoraNgo
 {
@@ -79,6 +80,18 @@ namespace HathoraNgo
         {
             base.OnJoinLobbyAsClientBtnClick();
             stateMgr.StartClientFromHathoraLobbySession();
+        }
+
+        public override void OnStartHostBtnClick()
+        {
+            base.OnStartHostBtnClick();
+            stateMgr.StartHost();
+        }
+        
+        public override void OnStopHostBtnClick()
+        {
+            base.OnStopHostBtnClick();
+            stateMgr.StopHost();
         }
         #endregion /Dynamic UI
     }
