@@ -341,10 +341,10 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
             }
         }
         
-        /// <summary>Copies as "ip:port". (!) Clipboard !works in webgl</summary>
+        /// <summary>Copies as "host:port". (!) Clipboard !works in webgl</summary>
         public async void OnCopyServerInfoBtnClick()
         {
-            string serverInfo = HathoraClientSession.GetServerInfoIpPort(); // "ip:port"
+            string serverInfo = HathoraClientSession.GetServerInfoHostPort(); // "host:port"
             GUIUtility.systemCopyBuffer = serverInfo; // Copy to clipboard
             
             // Show + Fade
@@ -500,7 +500,7 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
         {
             Debug.Log(
                 $"[HathoraNetUiBase] onGetActiveConnectionInfoSuccess: " +
-                $"{HathoraClientSession.GetServerInfoIpPort()} ({_connectionInfo.ExposedPort.TransportType})");
+                $"{HathoraClientSession.GetServerInfoHostPort()} ({_connectionInfo.ExposedPort.TransportType})");
             
             // ####################
             // ServerInfo:

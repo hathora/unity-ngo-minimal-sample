@@ -216,12 +216,17 @@ namespace Hathora.Demos.Shared.Scripts.Common
         /// <summary>
         /// Get the last queried "host:port" from a Hathora Client session.
         /// - From `HathoraClientSession.ServerConnectionInfo.ExposedPort`.
+        /// <param name="_useIpInsteadOfHost">Get IP instead of host name (required for NGO)</param>
         /// </summary>
-        public string GetHathoraSessionHostPort()
+        public string GetHathoraSessionHostPort(bool _useIpInsteadOfHost)
         {
             ExposedPort connectInfo = HathoraClientSession.Singleton.ServerConnectionInfo.ExposedPort;
 
-            string hostPort = $"{connectInfo.Host}:{connectInfo.Port}";
+            string hostOrIp = _useIpInsteadOfHost 
+                ? HathoraClientSession.Singleton.ServerConnectionIpAddress.ToString() 
+                : connectInfo.Host;
+            
+            string hostPort = $"{hostOrIp}:{connectInfo.Port}";
             return hostPort;
         }
         #endregion Hathora
