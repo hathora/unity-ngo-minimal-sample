@@ -886,6 +886,7 @@ GameObject:
   - component: {fileID: 8376981043650853733}
   - component: {fileID: -7152708250868291280}
   - component: {fileID: 7663428225590273643}
+  - component: {fileID: 543486385624810486}
   m_Layer: 0
   m_Name: HathoraNgoPlayer
   m_TagString: Untagged
@@ -1003,6 +1004,18 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &543486385624810486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5090726670223187118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26217a8e807823f42b9734532034748e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6600173009383299439
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,11 @@ namespace HathoraNgo.Server
             if (!IsServer)
                 return;
             
-            Transform selectedSpawnPoint = spawnMgr.GetRandomSpawnPoint();
+            Debug.Log($"[{nameof(PlayerSpawner)}] {nameof(OnNetworkSpawn)}");
+            
+            // Transform selectedSpawnPoint = spawnMgr.GetRandomSpawnPoint(); // Uncomment if you prefer random (stackable spawns)
+            Transform selectedSpawnPoint = spawnMgr.GetRoundRobinSpawnPoint();
+            
             this.transform.position = selectedSpawnPoint.position;
         }
     }

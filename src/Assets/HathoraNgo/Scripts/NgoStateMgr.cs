@@ -32,6 +32,10 @@ namespace HathoraNgo
         
         private static UnityTransport transport => 
             netMgr.NetworkConfig.NetworkTransport as UnityTransport;
+
+        [Header("Spawn on Network Start")]
+        [SerializeField, Tooltip("Server manages Player init transforms on connected")]
+        private GameObject playerSpawnerPrefab;
         #endregion // vars
 
         
@@ -73,11 +77,7 @@ namespace HathoraNgo
             netMgr.OnServerStarted += OnServerStarted;
             netMgr.OnServerStopped += OnServerStopped;
         }
-
-        private void OnServerStarted()
-        {
-        }
-
+        
         /// <summary>Wrapper needs to add `friendlyReason` err string</summary>
         private void OnClientTransportFailureWrapper() => 
             OnStartClientFail("Transport Error");

@@ -273,6 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verboseLogs: 1
+  playerSpawnerPrefab: {fileID: 3020450049441298128, guid: 5421c7a8aa743a340819d5079bf50d0d,
+    type: 3}
 --- !u!4 &1149734050
 Transform:
   m_ObjectHideFlags: 0
