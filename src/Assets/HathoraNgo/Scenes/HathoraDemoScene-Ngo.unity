@@ -762,37 +762,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d38579494d78a4da2e60be45bff4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1991525833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6730436420475557301, guid: e4dcbec2e4ad0514a94f944ced942c4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 6730436420086812906}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2057156117 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2707931864308583670, guid: 0b1d560e984c97e42acb36a66f5d2105,
-    type: 3}
-  m_PrefabInstance: {fileID: 2707931863916646020}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2057156119 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4014227140309847763, guid: 0b1d560e984c97e42acb36a66f5d2105,
-    type: 3}
-  m_PrefabInstance: {fileID: 2707931863916646020}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057156117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867cfab68ab9ae1418b2279faa960a3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2057156121
+--- !u!114 &1983127469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057156117}
+  m_GameObject: {fileID: 1983127462}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af517be3fd4420643883884449956abf, type: 3}
@@ -800,6 +776,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sdkDemoUi: {fileID: 1983127464}
   helloWorldDemoUi: {fileID: 2057156119}
+--- !u!1 &1991525833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6730436420475557301, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6730436420086812906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2057156119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4014227140309847763, guid: 0b1d560e984c97e42acb36a66f5d2105,
+    type: 3}
+  m_PrefabInstance: {fileID: 2707931863916646020}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867cfab68ab9ae1418b2279faa960a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2075361507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6730436420034938643, guid: e4dcbec2e4ad0514a94f944ced942c4d,
@@ -1147,7 +1141,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_Target
       value: 
-      objectReference: {fileID: 2057156121}
+      objectReference: {fileID: 0}
     - target: {fileID: 1418363420796170145, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
@@ -1522,7 +1516,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_Target
       value: 
-      objectReference: {fileID: 2057156121}
+      objectReference: {fileID: 0}
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[11].m_Target
@@ -1873,7 +1867,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_Target
       value: 
-      objectReference: {fileID: 2057156121}
+      objectReference: {fileID: 0}
     - target: {fileID: 2707931864174298626, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
@@ -2203,7 +2197,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[13].m_Target
       value: 
-      objectReference: {fileID: 2057156121}
+      objectReference: {fileID: 0}
     - target: {fileID: 3206447031202257702, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_CallState
@@ -2549,7 +2543,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_Target
       value: 
-      objectReference: {fileID: 2057156121}
+      objectReference: {fileID: 0}
     - target: {fileID: 6653614975494333692, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
@@ -2979,7 +2973,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[13].m_Target
       value: 
-      objectReference: {fileID: 2057156121}
+      objectReference: {fileID: 0}
     - target: {fileID: 8375416862907882896, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[8].m_CallState
@@ -4022,7 +4016,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1983127469}
     - target: {fileID: 6730436419053282267, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4041,8 +4035,8 @@ PrefabInstance:
     - target: {fileID: 6730436419053282267, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraNetClientMgrUiBase,
-        Assembly-CSharp
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
+        Hathora.Demos.Shared
       objectReference: {fileID: 0}
     - target: {fileID: 6730436419249410377, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
@@ -4063,7 +4057,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1983127469}
     - target: {fileID: 6730436419249410377, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4082,8 +4076,8 @@ PrefabInstance:
     - target: {fileID: 6730436419249410377, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraNetClientMgrUiBase,
-        Assembly-CSharp
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
+        Hathora.Demos.Shared
       objectReference: {fileID: 0}
     - target: {fileID: 6730436419347061397, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
@@ -4094,7 +4088,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1983127469}
     - target: {fileID: 6730436419467952925, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4103,14 +4097,14 @@ PrefabInstance:
     - target: {fileID: 6730436419467952925, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraNetClientMgrUiBase,
-        Assembly-CSharp
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
+        Hathora.Demos.Shared
       objectReference: {fileID: 0}
     - target: {fileID: 6730436419547317144, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1983127469}
     - target: {fileID: 6730436419547317144, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4119,8 +4113,8 @@ PrefabInstance:
     - target: {fileID: 6730436419547317144, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraNetClientMgrUiBase,
-        Assembly-CSharp
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
+        Hathora.Demos.Shared
       objectReference: {fileID: 0}
     - target: {fileID: 6730436419547317147, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
@@ -4136,7 +4130,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1983127469}
     - target: {fileID: 6730436419947261734, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4155,8 +4149,7 @@ PrefabInstance:
     - target: {fileID: 6730436419947261734, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: Hathora.Demos._1_FishNetDemo.HathoraScripts.Client.ClientMgr.HathoraFishnetClientMgrUi,
-        Assembly-CSharp
+      value: HathoraNgo.Client.HathoraNgoClientMgrDemoUi, HathoraNgo
       objectReference: {fileID: 0}
     - target: {fileID: 6730436420034938640, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
@@ -4177,7 +4170,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1983127469}
     - target: {fileID: 6730436420034938640, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -4206,8 +4199,8 @@ PrefabInstance:
     - target: {fileID: 6730436420034938640, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraNetClientMgrUiBase,
-        Assembly-CSharp
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
+        Hathora.Demos.Shared
       objectReference: {fileID: 0}
     - target: {fileID: 6730436420034938640, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
@@ -4234,7 +4227,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1983127469}
     - target: {fileID: 6730436420283370812, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -4243,8 +4236,8 @@ PrefabInstance:
     - target: {fileID: 6730436420283370812, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraNetClientMgrUiBase,
-        Assembly-CSharp
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
+        Hathora.Demos.Shared
       objectReference: {fileID: 0}
     - target: {fileID: 6730436420694237204, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
@@ -4280,7 +4273,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1983127469}
     - target: {fileID: 6730436420694237204, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4299,8 +4292,8 @@ PrefabInstance:
     - target: {fileID: 6730436420694237204, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraNetClientMgrUiBase,
-        Assembly-CSharp
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
+        Hathora.Demos.Shared
       objectReference: {fileID: 0}
     - target: {fileID: 6730436420694237204, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
@@ -4316,6 +4309,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730436420779342457, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730436420779342457, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730436420779342457, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 1983127469}
+    - target: {fileID: 6730436420779342457, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730436420779342457, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: OnGetServerInfoBtnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730436420779342457, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
+        Hathora.Demos.Shared
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730436420779342457, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6730436420827614688, guid: e4dcbec2e4ad0514a94f944ced942c4d,
         type: 3}
