@@ -1,5 +1,6 @@
 // Created by dylan@hathora.dev
 
+using Hathora.Demos.Shared.Scripts.Client.Player;
 using Hathora.Demos.Shared.Scripts.Common;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -139,7 +140,6 @@ namespace HathoraNgo
         
         
         #region NetworkManager Client
-        
         ///<summary>
         /// Connect to the NetworkManager Server as a NetworkManager Client using custom host:ip.
         /// We'll set the host:ip to the NetworkManger -> then call StartClientFromNetworkMgr().
@@ -269,6 +269,15 @@ namespace HathoraNgo
             
             // Success - ready to connect
             return true;
+        }
+
+        protected override void OnClientStarted()
+        {
+            base.OnClientStarted(); // Logs, event triger
+            
+            HathoraLocalClientUiMgr.Singleton.OnConnected(
+                netMgr.LocalClient.ClientId.ToString(),
+                netMgr.ConnectedClientsIds.Count);
         }
         #endregion // NetworkManager Client
 
