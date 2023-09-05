@@ -17,6 +17,8 @@ namespace HathoraNgo
         [SerializeField]
         private Transform[] playerSpawnPoints;
 
+        private int roundRobinIndex = 0; 
+
         
         #region Init
         private void Awake() =>
@@ -38,18 +40,31 @@ namespace HathoraNgo
         }
         #endregion // Init
 
+
+        /// <summary>Asserts that spawns exist, and has at least 1</summary>
+        private void validateSpawns()
+        {
+            Assert.IsNotNull(playerSpawnPoints, "Expected playerSpawnPoints != null");
+            Assert.IsTrue(playerSpawnPoints.Length > 0, "Expected playerSpawnPoints.Length > 0");
+        }
         
         /// <summary>Get a random spawn point's Transform position.</summary>
         public Transform GetRandomSpawnPoint()
         {
-            Assert.IsNotNull(playerSpawnPoints, "Expected playerSpawnPoints != null");
-            Assert.IsTrue(playerSpawnPoints.Length > 0, "Expected playerSpawnPoints.Length > 00");
+            validateSpawns();
             
             const int minInclusive = 0;
             int maxExclusive = playerSpawnPoints.Length;
             int randomIndex = Random.Range(minInclusive, maxExclusive);
             
             return playerSpawnPoints[randomIndex];
+        }
+        
+        /// <summary>Get a fixed spawn point's Transform position, rotating from 1st to last spawn points.</summary>
+        public Transform GetRoundRobinSpawnPoint()
+        {
+            validateSpawns();
+            return playerSpawnPoints[roundRobinIndex++];
         }
     }
 }
