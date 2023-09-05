@@ -77,6 +77,16 @@ namespace Hathora.Demos.Shared.Scripts.Common
         #endregion // Local Client Events
         
         
+        #region Local Server Events
+        /// <summary>Event triggers when a NetworkManager server started.</summary>
+        public static event Action OnServerStartedEvent;
+
+        /// <summary>Event triggers when a NetworkManager stopped.</summary>
+        /// <returns>isHost</returns>
+        public static event Action<bool> OnServerStoppedEvent;
+        #endregion // Local Server Events
+        
+        
         #region Init
         /// <summary>Sets base Singleton instance</summary>
         protected virtual void Awake() =>
@@ -180,6 +190,26 @@ namespace Hathora.Demos.Shared.Scripts.Common
             OnClientStopped();
         }
         #endregion // Client State
+        
+        
+        #region Server State
+        protected virtual void OnServerStarted()
+        {
+            if (verboseLogs)
+                Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnServerStarted)}");
+            
+            OnServerStartedEvent?.Invoke();
+        }
+
+        /// <param name="_isHost">If "Host", we're both Client + Server</param>
+        protected virtual void OnServerStopped(bool _isHost)
+        {
+            if (verboseLogs)
+                Debug.Log($"[{nameof(NetworkMgrStateTracker)}] {nameof(OnServerStopped)}");
+            
+            OnServerStoppedEvent?.Invoke(_isHost);
+        }
+        #endregion // Server State
         
         
         #region Hathora
