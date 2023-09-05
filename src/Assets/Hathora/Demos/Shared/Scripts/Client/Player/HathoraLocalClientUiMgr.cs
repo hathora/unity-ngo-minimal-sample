@@ -1,5 +1,6 @@
 // Created by dylan@hathora.dev
 
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -23,19 +24,20 @@ namespace Hathora.Demos.Shared.Scripts.Client.Player
 
 
         #region Init
-        private void Awake() =>
+        private void Awake()
+        {
             setSingleton();
+            gameObject.SetActive(false); // Hide by default; Player spawn will show this later
+        }
 
         /// <summary>Set a singleton instance - we'll only ever have one instance of this.</summary>
         private void setSingleton()
         {
             if (Singleton != null)
             {
-                Debug.LogError($"[{nameof(HathoraLocalClientUiMgr)}.{nameof(setSingleton)}] " +
-                    "Error: Destroying dupe");
-                
                 Destroy(gameObject);
-                return;
+                throw new Exception($"[{nameof(HathoraLocalClientUiMgr)}.{nameof(setSingleton)}] " +
+                    "Error: Destroying dupe");
             }
             
             Singleton = this;
