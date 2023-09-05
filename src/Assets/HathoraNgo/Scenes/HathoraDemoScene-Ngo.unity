@@ -3370,7 +3370,7 @@ GameObject:
   - component: {fileID: 3573074622237640040}
   - component: {fileID: 4171282268450661727}
   m_Layer: 5
-  m_Name: LocalStaticPlayerMgr
+  m_Name: OfflinePlayerMgr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
