@@ -516,6 +516,7 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
             {
                 sdkDemoUi.AuthBtn.gameObject.SetActive(false);
                 sdkDemoUi.InvalidConfigPnl.SetActive(true);
+                sdkDemoUi.AuthTxt.gameObject.SetActive(false);
 
                 throw new Exception($"[{nameof(ClientMgr)}] !{nameof(HathoraClientConfig)} - " +
                     $"Serialize one at {netComponentPathFriendlyStr}");
