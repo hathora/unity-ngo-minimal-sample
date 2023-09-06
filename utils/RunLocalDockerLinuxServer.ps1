@@ -1,5 +1,5 @@
 #########################################################
-# RunLocalDockerLinuxServer.ps1
+# RunLocalDockerLinuxServer.ps1 v1.0.1
 # Instead of deploying, we'll run it in a local container
 #
 # REQUIREMENTS:

@@ -1,7 +1,7 @@
 #!/bin/bash
 ###################################################################################################
 #
-# RunWslLinuxServer.sh - Runs 1 LinuxServer (via bash shell).
+# RunWslLinuxServer.sh - Runs 1 LinuxServer (via bash shell). v1.0.1
 #  By default, this works with default Unity `HathoraServerConfig` settings.
 #  See 'Networking.cs' for the main init.
 #

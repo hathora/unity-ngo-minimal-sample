@@ -1,6 +1,6 @@
 ########################################################
 # Copy this template (Eg: `PrepUploadToHathora.ps1`) 
-# and fill in secret keys
+# and fill in secret keys. v1.0.1
 #######################################################
 
 # Unity Build config
