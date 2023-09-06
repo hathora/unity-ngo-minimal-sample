@@ -335,9 +335,9 @@ namespace HathoraNgo
             netMgr.OnClientConnectedCallback -= OnClientStartingWrapper;
             netMgr.OnClientDisconnectCallback -= OnClientStoppedWrapper;
             
-            //// Server events >> TODO
-            // netMgr.OnServerStarted -= () =>
-            // netMgr.OnServerStopped -= (bool _isClient) => 
+            // Server events >> TODO
+            netMgr.OnServerStarted -= OnServerStarted;
+            netMgr.OnServerStopped -= OnServerStopped;
         }
         #endregion // Cleanup
     }
