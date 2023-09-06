@@ -25,8 +25,13 @@ namespace Hathora.Demos.Shared.Scripts.Client.Player
 
 
         #region Init
-        private void Awake() =>
+        private void Awake()
+        {
             setSingleton();
+            
+            Debug.Log($"[{nameof(HathoraLocalClientUiMgr)}] {nameof(Awake)} - Setting !Active until connected.");
+            gameObject.SetActive(false);
+        }
 
         /// <summary>Set a singleton instance - we'll only ever have one instance of this.</summary>
         private void setSingleton()
@@ -47,9 +52,12 @@ namespace Hathora.Demos.Shared.Scripts.Client.Player
             string _clientId,
             int _numClientsConnected)
         {
+            Debug.Log($"[{nameof(HathoraLocalClientUiMgr)}] {nameof(OnConnected)}");
+            
             playerInfoTxt.text =
                 $"{headerBoldColorBegin}ClientId:{headerBoldColorEnd} {_clientId}\n" +
                 $"{headerBoldColorBegin}NumClients:{headerBoldColorEnd} {_numClientsConnected}";
+            gameObject.SetActive(true);
         }
     }
 }
