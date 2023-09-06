@@ -8,43 +8,29 @@ using UnityEngine.Assertions;
 namespace HathoraNgo.Client
 {
     /// <summary>
-    /// Handles the non-Player UI so we can keep the logic separate.
-    /// - Generally, this is going to be pre-connection UI such as create/join lobbies.
-    /// - UI OnEvent entry points from Buttons start here.
-    /// - This particular child should be used for FishNet.
-    /// - TODO: Mv over scripts from HathoraClientMgrDemoUI 100% related to Hello World demo.
+    /// [HELLO WORLD DEMO] Handles UI clicks -> Calls stateMgr events.
+    /// - Base logs UI interactions / handles WebGL workarounds.
     /// </summary>
-    public class HathoraNgoClientMgrDemoUi : HathoraClientMgrDemoUi
+    public class NgoHelloWorldDemoUi : HathoraHelloWorldDemoUi
     {
         private static NgoStateMgr stateMgr => 
             NgoStateMgr.Singleton;
-        
-
-        #region Init
-        protected override void Awake() =>
-            base.Awake();
-        
-        protected override void Start() =>
-            base.Start();
-        #endregion // Init
         
         
         #region UI Interactions
         public override void OnStartServerBtnClick()
         {
-            base.OnStartServerBtnClick();
+            base.OnStartServerBtnClick(); // Logs
             stateMgr.StartServer();
         }
-
-        /// <summary></summary>
-        /// <param name="_hostPortOverride">
-        /// Normally passes the host:port provided by Hathora, but FishNet
-        /// specifically gets it from the Ui.clientConnectInputField
-        /// </param>
+        
+        /// <summary>Considers the Hello Wrold demo input field for a custom host:port.
+        /// </summary>
+        /// <param name="_hostPortOverride"></param>
         public override void OnStartClientBtnClick(string _hostPortOverride = null)
         {
             // We want to override hostPort from the input field - np if null
-            _hostPortOverride = HelloWorldDemoUi.ClientConnectInputField.text.Trim();
+            _hostPortOverride = ClientConnectInputField.text.Trim();
             
             // Cleanup, if empty string, since we have 2 overloads later
             if (_hostPortOverride == "")
@@ -63,28 +49,22 @@ namespace HathoraNgo.Client
             stateMgr.StartClient(_hostPortOverride);
         }
 
-        public override void OnStopServerBtnClick()
-        {
-            base.OnStopServerBtnClick();
-            stateMgr.StopServer();
-        }
-        
-        public override void OnStopClientBtnClick()
-        {
-            base.OnStopClientBtnClick();
-            stateMgr.StopClient();
-        }
-
-        public override void OnJoinLobbyAsClientBtnClick()
-        {
-            base.OnJoinLobbyAsClientBtnClick();
-            stateMgr.StartClientFromHathoraLobbySession();
-        }
-
         public override void OnStartHostBtnClick()
         {
-            base.OnStartHostBtnClick();
+            base.OnStartHostBtnClick(); // Logs
             stateMgr.StartHost();
+        }
+
+        public override void OnStopServerBtnClick()
+        {
+            base.OnStopServerBtnClick(); // Logs
+            stateMgr.StopServer();
+        }
+
+        public override void OnStopClientBtnClick()
+        {
+            base.OnStopClientBtnClick(); // Logs
+            stateMgr.StopClient();
         }
         
         public override void OnStopHostBtnClick()
@@ -92,6 +72,6 @@ namespace HathoraNgo.Client
             base.OnStopHostBtnClick();
             stateMgr.StopHost();
         }
-        #endregion /Dynamic UI
+        #endregion // UI Interactions
     }
 }

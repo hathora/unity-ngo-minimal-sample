@@ -18,9 +18,8 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
     /// [SDK DEMO] Handles the non-Player UI so we can keep the logic separate.
     /// - Generally, this is going to be pre-connection UI such as create/join lobbies.
     /// - UI OnEvent entry points from Buttons start here.
-    /// - TODO: Mv Hello World specific scripts to HathoraClientMgrHeloWorldDemoUi.
     /// </summary>
-    public abstract class HathoraClientMgrDemoUi : MonoBehaviour
+    public abstract class HathoraSdkDemoUi : MonoBehaviour
     {
         #region Vars
         #region Vars -> Serialized Fields
@@ -29,9 +28,10 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
         private HathoraClientSdkUiContainer sdkDemoUi;
         protected HathoraClientSdkUiContainer SDKDemoUi => sdkDemoUi;
         
+        [FormerlySerializedAs("helloWorldDemoUi")]
         [SerializeField, Tooltip("Contains UI elements - like txts/btns - for Hello World demo")]
-        private HathoraClientMgrHelloWorldDemoUi helloWorldDemoUi;
-        protected HathoraClientMgrHelloWorldDemoUi HelloWorldDemoUi => helloWorldDemoUi;
+        private HathoraHelloWorldDemoUi demoUi;
+        protected HathoraHelloWorldDemoUi DemoUi => demoUi;
         #endregion // Vars -> Serialized Fields
 
         private HathoraClientMgr ClientMgr => HathoraClientMgr.Singleton;
@@ -47,7 +47,7 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
 
         #region Init
         protected virtual void Awake() =>
-            Debug.Log($"[HathoraClientMgrDemoUi] Awake");
+            Debug.Log($"[HathoraSdkDemoUi] Awake");
 
         protected virtual void Start() =>
             subToClientMgrEvents();
@@ -174,36 +174,6 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
         
         
         #region UI Interactions (BtnClicks, InputEnds)
-        public virtual void OnStartServerBtnClick()
-        {
-            // stateMgr.StartServer();
-        }
-
-        /// <param name="_hostPortOverride">host:port provided by Hathora</param>
-        public virtual void OnStartClientBtnClick(string _hostPortOverride = null) =>
-            Debug.Log($"[HathoraNetClientMgrUiBase.OnStartClientBtnClick] " +
-                $"_hostPortOverride=={_hostPortOverride} (if null, we'll get from NetworkManager)");
-
-        public virtual void OnStartHostBtnClick()
-        {
-            // stateMgr.StartServer();
-        }
-
-        public virtual void OnStopServerBtnClick()
-        {
-            // stateMgr.StopServer();
-        }
-
-        public virtual void OnStopClientBtnClick()
-        {
-            // stateMgr.StopClient();
-        }
-
-        public virtual void OnStopHostBtnClick()
-        {
-            // stateMgr.StartHost();
-        }
-
         public async void OnAuthLoginBtnClick()
         {
             if (!ClientMgr.CheckIsValidToAuth())
@@ -417,7 +387,7 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
 
         private void setServerInfoTxt(string serverInfo)
         {
-            Debug.Log($"[HathoraClientMgrDemoUi] setServerInfoTxt: {serverInfo}");
+            Debug.Log($"[HathoraSdkDemoUi] setServerInfoTxt: {serverInfo}");
 
             sdkDemoUi.GetServerInfoTxt.text = serverInfo;
             sdkDemoUi.GetServerInfoTxt.gameObject.SetActive(true);
