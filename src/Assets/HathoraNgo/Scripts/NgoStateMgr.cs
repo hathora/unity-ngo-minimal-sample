@@ -276,6 +276,8 @@ namespace HathoraNgo
         [ClientRpc]
         private void onUpdatedClientCountClientRpc()
         {
+            Debug.Log($"[{nameof(NgoStateMgr)}.{nameof(onUpdatedClientCountClientRpc)}] {clientCount.Value}");
+            
             string clientId = netMgr.LocalClient.ClientId.ToString();
             byte numClientsConnected = clientCount.Value;
 
