@@ -1,9 +1,6 @@
 // Created by dylan@hathora.dev
 
-using System;
-using Hathora.Demos.Shared.Scripts.Client.Player;
 using Hathora.Demos.Shared.Scripts.Common;
-using HathoraNgo.Client;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
@@ -35,12 +32,6 @@ namespace HathoraNgo
         
         private static UnityTransport transport => 
             netMgr.NetworkConfig.NetworkTransport as UnityTransport;
-
-        /// <summary>
-        /// - Set by Server @ setClientCountServerRpc
-        /// - When updated, Clients get notified via onUpdatedClientCountClientRpc
-        /// </summary>
-        private NetworkVariable<byte> clientCount = new NetworkVariable<byte>(0);
         #endregion // vars
 
         
@@ -263,49 +254,10 @@ namespace HathoraNgo
             // Success - ready to connect
             return true;
         }
-
-        protected override void OnServerStarted()
-        {
-            base.OnServerStarted(); // Logs + triggers OnServerStartedEvent 
-            setClientCountServerRpc(); // Callback => onUpdatedClientCountClientRpc
-        }
-
-        /// <summary>
-        /// The server just updated clientCount
-        /// </summary>
-        [ClientRpc]
-        private void onUpdatedClientCountClientRpc()
-        {
-            Debug.Log($"[{nameof(NgoStateMgr)}.{nameof(onUpdatedClientCountClientRpc)}] {clientCount.Value}");
-            
-            string clientId = netMgr.LocalClient.ClientId.ToString();
-            byte numClientsConnected = clientCount.Value;
-
-            NgoLocalClientUiMgr.Singleton.OnNumClientsChanged(clientId, numClientsConnected);
-        }
         #endregion // NetworkManager Client
         
         
         #region NetworkManager Server
-        [ServerRpc]
-        private void setClientCountServerRpc()
-        {
-            string logPrefix = $"[{nameof(NgoStateMgr)}.{nameof(setClientCountServerRpc)}]";
-            
-            try
-            {
-                clientCount.Value = (byte)netMgr.ConnectedClientsIds.Count;
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Error: {e}");
-                throw;
-            }
-            
-            Debug.Log($"{logPrefix} Server set {nameof(clientCount)}=={clientCount}");
-            onUpdatedClientCountClientRpc();
-        }
-        
         /// <summary>Starts a NetworkManager local Server.</summary>
         public void StartServer() =>
             netMgr.StartServer();

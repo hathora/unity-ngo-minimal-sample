@@ -17,7 +17,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
     /// - Contains events like: OnLocalClientStoppedEvent, OnLocalClientStartedEvent.
     /// - Tracks `ClientState` like: Stopped, Starting, Started.
     /// </summary>
-    public abstract class NetworkMgrStateTracker : NetworkBehaviour
+    public abstract class NetworkMgrStateTracker : MonoBehaviour
     {
         #region Uncomment for child architecture guide
         // protected abstract void SetSingleton();
