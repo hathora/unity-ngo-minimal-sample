@@ -3,6 +3,7 @@
 using System;
 using Hathora.Demos.Shared.Scripts.Client.Player;
 using Hathora.Demos.Shared.Scripts.Common;
+using HathoraNgo.Client;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
@@ -40,10 +41,6 @@ namespace HathoraNgo
         /// - When updated, Clients get notified via onUpdatedClientCountClientRpc
         /// </summary>
         private NetworkVariable<byte> clientCount = new NetworkVariable<byte>(0);
-
-        [Header("Spawn on Network Start")]
-        [SerializeField, Tooltip("Server manages Player init transforms on connected")]
-        private GameObject localPlayerMgrPrefab;
         #endregion // vars
 
         
@@ -279,9 +276,10 @@ namespace HathoraNgo
         [ClientRpc]
         private void onUpdatedClientCountClientRpc()
         {
-            HathoraLocalClientUiMgr.Singleton.OnConnected(
-                netMgr.LocalClient.ClientId.ToString(),
-                clientCount.Value);
+            string clientId = netMgr.LocalClient.ClientId.ToString();
+            byte numClientsConnected = clientCount.Value;
+
+            NgoLocalClientUiMgr.Singleton.OnNumClientsChanged(clientId, numClientsConnected);
         }
         #endregion // NetworkManager Client
         
