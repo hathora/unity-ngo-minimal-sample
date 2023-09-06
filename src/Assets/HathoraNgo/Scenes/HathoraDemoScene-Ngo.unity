@@ -107,7 +107,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -120,7 +120,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -159,6 +159,12 @@ MonoBehaviour:
 --- !u!1 &394960711 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 879952986910734040, guid: 0b1d560e984c97e42acb36a66f5d2105,
+    type: 3}
+  m_PrefabInstance: {fileID: 2707931863916646020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &414826767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2707931864308583670, guid: 0b1d560e984c97e42acb36a66f5d2105,
     type: 3}
   m_PrefabInstance: {fileID: 2707931863916646020}
   m_PrefabAsset: {fileID: 0}
@@ -282,13 +288,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149734047}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1264116031 stripped
 GameObject:
@@ -423,13 +429,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581951765}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1684674994 stripped
 Transform:
@@ -448,6 +454,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 132536, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
@@ -743,6 +750,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
 --- !u!1 &1983127462 stripped
 GameObject:
@@ -775,25 +785,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sdkDemoUi: {fileID: 1983127464}
-  helloWorldDemoUi: {fileID: 2057156119}
+  demoUi: {fileID: 0}
 --- !u!1 &1991525833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6730436420475557301, guid: e4dcbec2e4ad0514a94f944ced942c4d,
     type: 3}
   m_PrefabInstance: {fileID: 6730436420086812906}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2057156119 stripped
+--- !u!114 &2057156122
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4014227140309847763, guid: 0b1d560e984c97e42acb36a66f5d2105,
-    type: 3}
-  m_PrefabInstance: {fileID: 2707931863916646020}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 414826767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867cfab68ab9ae1418b2279faa960a3d, type: 3}
+  m_Script: {fileID: 11500000, guid: ac5c78b8cd615b5428bb09ac7110f419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clientConnectInputField: {fileID: 2707931863916646022}
+  netStartServerBtn: {fileID: 325559296}
 --- !u!1 &2075361507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6730436420034938643, guid: e4dcbec2e4ad0514a94f944ced942c4d,
@@ -827,7 +839,6 @@ RectTransform:
   - {fileID: 4509808458595860845}
   - {fileID: 1608344698014185204}
   m_Father: {fileID: 4061253633687141775}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -847,7 +858,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4509808458595860845}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -907,13 +917,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194941214106636804}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1274104200866039070
 MonoBehaviour:
@@ -958,7 +968,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 181799438711330048}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1030,6 +1039,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 195514119193487565, guid: 0b1d560e984c97e42acb36a66f5d2105,
@@ -1141,7 +1151,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2057156122}
     - target: {fileID: 1418363420796170145, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
@@ -1260,7 +1270,7 @@ PrefabInstance:
     - target: {fileID: 1418363420796170145, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_TargetAssemblyTypeName
-      value: HathoraNgo.HathoraNgoClientMgrDemoUi, HathoraNgo
+      value: HathoraNgo.Client.NgoHelloWorldDemoUi, HathoraNgo
       objectReference: {fileID: 0}
     - target: {fileID: 1418363420796170145, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -1460,7 +1470,7 @@ PrefabInstance:
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[11].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -1516,7 +1526,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2057156122}
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[11].m_Target
@@ -1605,7 +1615,7 @@ PrefabInstance:
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[11].m_MethodName
-      value: OnStartClientBtnClick
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -1650,13 +1660,13 @@ PrefabInstance:
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_TargetAssemblyTypeName
-      value: HathoraNgo.HathoraNgoClientMgrDemoUi, HathoraNgo
+      value: HathoraNgo.Client.NgoHelloWorldDemoUi, HathoraNgo
       objectReference: {fileID: 0}
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[11].m_TargetAssemblyTypeName
-      value: Hathora.Demos._1_FishNetDemo.HathoraScripts.Client.ClientMgr.HathoraFishnetClientMgrUi,
-        Assembly-CSharp
+      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraHelloWorldDemoUi,
+        Hathora.Demos.Shared
       objectReference: {fileID: 0}
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -1746,7 +1756,7 @@ PrefabInstance:
     - target: {fileID: 2707931863469968435, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[11].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2707931864174298624, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -1867,7 +1877,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2057156122}
     - target: {fileID: 2707931864174298626, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
@@ -2001,7 +2011,7 @@ PrefabInstance:
     - target: {fileID: 2707931864174298626, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[10].m_TargetAssemblyTypeName
-      value: HathoraNgo.HathoraNgoClientMgrDemoUi, HathoraNgo
+      value: HathoraNgo.Client.NgoHelloWorldDemoUi, HathoraNgo
       objectReference: {fileID: 0}
     - target: {fileID: 2707931864174298626, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -2197,7 +2207,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[13].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2057156122}
     - target: {fileID: 3206447031202257702, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_CallState
@@ -2331,8 +2341,7 @@ PrefabInstance:
     - target: {fileID: 3206447031202257702, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[13].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
-        Hathora.Demos.Shared
+      value: HathoraNgo.Client.NgoHelloWorldDemoUi, HathoraNgo
       objectReference: {fileID: 0}
     - target: {fileID: 3206447031202257702, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -2543,7 +2552,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2057156122}
     - target: {fileID: 6653614975494333692, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
@@ -2652,7 +2661,7 @@ PrefabInstance:
     - target: {fileID: 6653614975494333692, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_TargetAssemblyTypeName
-      value: HathoraNgo.HathoraNgoClientMgrDemoUi, HathoraNgo
+      value: HathoraNgo.Client.NgoHelloWorldDemoUi, HathoraNgo
       objectReference: {fileID: 0}
     - target: {fileID: 6653614975494333692, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -2973,7 +2982,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[13].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2057156122}
     - target: {fileID: 8375416862907882896, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[8].m_CallState
@@ -3132,8 +3141,7 @@ PrefabInstance:
     - target: {fileID: 8375416862907882896, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[13].m_TargetAssemblyTypeName
-      value: Hathora.Demos.Shared.Scripts.Client.ClientMgr.HathoraClientMgrDemoUi,
-        Hathora.Demos.Shared
+      value: HathoraNgo.Client.NgoHelloWorldDemoUi, HathoraNgo
       objectReference: {fileID: 0}
     - target: {fileID: 8375416862907882896, guid: 0b1d560e984c97e42acb36a66f5d2105,
         type: 3}
@@ -3220,7 +3228,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4014227140309847763, guid: 0b1d560e984c97e42acb36a66f5d2105, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2707931864308583670, guid: 0b1d560e984c97e42acb36a66f5d2105,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2057156122}
   m_SourcePrefab: {fileID: 100100000, guid: 0b1d560e984c97e42acb36a66f5d2105, type: 3}
 --- !u!1 &2707931863916646021 stripped
 GameObject:
@@ -3544,7 +3560,6 @@ RectTransform:
   m_Children:
   - {fileID: 7735777138252823817}
   m_Father: {fileID: 6760954544609605561}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -3633,7 +3648,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3682,7 +3699,6 @@ RectTransform:
   - {fileID: 181799438711330048}
   - {fileID: 6760954544609605561}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3707,6 +3723,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4194415798059259002, guid: 127b03e81323ad14ca3d3a53f8f2eded,
@@ -3780,6 +3797,9 @@ PrefabInstance:
       value: HathoraNetSpawnPoints
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 127b03e81323ad14ca3d3a53f8f2eded, type: 3}
 --- !u!222 &4242573237641596197
 CanvasRenderer:
@@ -3844,7 +3864,6 @@ RectTransform:
   m_Children:
   - {fileID: 458966882622820246}
   m_Father: {fileID: 181799438711330048}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -3971,6 +3990,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 927034865, guid: e4dcbec2e4ad0514a94f944ced942c4d, type: 3}
@@ -4487,6 +4507,17 @@ PrefabInstance:
       value: InvalidClientConfigPnl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6730436420827614691, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5455464064443103609}
+    - targetCorrespondingSourceObject: {fileID: 6730436420958521615, guid: e4dcbec2e4ad0514a94f944ced942c4d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1983127469}
   m_SourcePrefab: {fileID: 100100000, guid: e4dcbec2e4ad0514a94f944ced942c4d, type: 3}
 --- !u!224 &6760954544609605561
 RectTransform:
@@ -4503,7 +4534,6 @@ RectTransform:
   - {fileID: 3476532030948828786}
   - {fileID: 8864411138418192553}
   m_Father: {fileID: 4061253633687141775}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -4549,7 +4579,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3476532030948828786}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -4663,6 +4692,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8791311661268282286, guid: 2d63f6f393ed6914880cf620644c1d77,
@@ -4975,6 +5005,9 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d63f6f393ed6914880cf620644c1d77, type: 3}
 --- !u!224 &8864411138418192553
 RectTransform:
@@ -4989,7 +5022,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6760954544609605561}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5004,3 +5036,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4262128804510250156}
   m_CullTransparentMesh: 1
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1978406982}
+  - {fileID: 4194415799525400729}
+  - {fileID: 8791311662459583026}
+  - {fileID: 2707931863916646020}
+  - {fileID: 1194941214106636806}
+  - {fileID: 1149734050}
+  - {fileID: 4061253633687141775}
+  - {fileID: 6730436420086812906}
+  - {fileID: 1581951769}
