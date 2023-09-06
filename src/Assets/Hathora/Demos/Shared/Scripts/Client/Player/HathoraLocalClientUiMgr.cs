@@ -2,6 +2,7 @@
 
 using System;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Hathora.Demos.Shared.Scripts.Client.Player
@@ -9,7 +10,7 @@ namespace Hathora.Demos.Shared.Scripts.Client.Player
     /// <summary>
     /// This UI doesn't need to spawn on the network, but will be called when the client connects to show UI.
     /// </summary>
-    public class HathoraLocalClientUiMgr : MonoBehaviour
+    public class HathoraLocalClientUiMgr : NetworkBehaviour
     {
         #region Vars
         public static HathoraLocalClientUiMgr Singleton { get; private set; }
@@ -24,11 +25,8 @@ namespace Hathora.Demos.Shared.Scripts.Client.Player
 
 
         #region Init
-        private void Awake()
-        {
+        private void Awake() =>
             setSingleton();
-            gameObject.SetActive(false); // Hide by default; Player spawn will show this later
-        }
 
         /// <summary>Set a singleton instance - we'll only ever have one instance of this.</summary>
         private void setSingleton()

@@ -1,5 +1,6 @@
 // Created by dylan@hathora.dev
 
+using System;
 using Hathora.Demos.Shared.Scripts.Client.Player;
 using Hathora.Demos.Shared.Scripts.Common;
 using Unity.Netcode;
@@ -34,9 +35,15 @@ namespace HathoraNgo
         private static UnityTransport transport => 
             netMgr.NetworkConfig.NetworkTransport as UnityTransport;
 
+        /// <summary>
+        /// - Set by Server @ setClientCountServerRpc
+        /// - When updated, Clients get notified via onUpdatedClientCountClientRpc
+        /// </summary>
+        private NetworkVariable<byte> clientCount = new NetworkVariable<byte>(0);
+
         [Header("Spawn on Network Start")]
         [SerializeField, Tooltip("Server manages Player init transforms on connected")]
-        private GameObject playerSpawnerPrefab;
+        private GameObject localPlayerMgrPrefab;
         #endregion // vars
 
         
@@ -112,17 +119,6 @@ namespace HathoraNgo
             Singleton = this;
         }
         #endregion // Init
-        
-        
-        #region NetworkManager Server
-        /// <summary>Starts a NetworkManager local Server.</summary>
-        public void StartServer() =>
-            netMgr.StartServer();
-
-        /// <summary>Stops a NetworkManager local Server. Discards all queued messages.</summary>
-        public void StopServer() =>
-            stopClientServerHost();
-        #endregion // NetworkManager Server
         
         
         #region NetworkManager Host
@@ -271,15 +267,53 @@ namespace HathoraNgo
             return true;
         }
 
-        protected override void OnClientStarted()
+        protected override void OnServerStarted()
         {
-            base.OnClientStarted(); // Logs, event triger
-            
+            base.OnServerStarted(); // Logs + triggers OnServerStartedEvent 
+            setClientCountServerRpc(); // Callback => onUpdatedClientCountClientRpc
+        }
+
+        /// <summary>
+        /// The server just updated clientCount
+        /// </summary>
+        [ClientRpc]
+        private void onUpdatedClientCountClientRpc()
+        {
             HathoraLocalClientUiMgr.Singleton.OnConnected(
                 netMgr.LocalClient.ClientId.ToString(),
-                netMgr.ConnectedClientsIds.Count);
+                clientCount.Value);
         }
         #endregion // NetworkManager Client
+        
+        
+        #region NetworkManager Server
+        [ServerRpc]
+        private void setClientCountServerRpc()
+        {
+            string logPrefix = $"[{nameof(NgoStateMgr)}.{nameof(setClientCountServerRpc)}]";
+            
+            try
+            {
+                clientCount.Value = (byte)netMgr.ConnectedClientsIds.Count;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error: {e}");
+                throw;
+            }
+            
+            Debug.Log($"{logPrefix} Server set {nameof(clientCount)}=={clientCount}");
+            onUpdatedClientCountClientRpc();
+        }
+        
+        /// <summary>Starts a NetworkManager local Server.</summary>
+        public void StartServer() =>
+            netMgr.StartServer();
+
+        /// <summary>Stops a NetworkManager local Server. Discards all queued messages.</summary>
+        public void StopServer() =>
+            stopClientServerHost();
+        #endregion // NetworkManager Server
 
 
         #region Cleanup

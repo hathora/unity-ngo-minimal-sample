@@ -3,6 +3,7 @@
 using System;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Core.Scripts.Runtime.Client;
+using Unity.Netcode; // Added for NGO
 using UnityEngine;
 
 namespace Hathora.Demos.Shared.Scripts.Common
@@ -16,7 +17,7 @@ namespace Hathora.Demos.Shared.Scripts.Common
     /// - Contains events like: OnLocalClientStoppedEvent, OnLocalClientStartedEvent.
     /// - Tracks `ClientState` like: Stopped, Starting, Started.
     /// </summary>
-    public abstract class NetworkMgrStateTracker : MonoBehaviour
+    public abstract class NetworkMgrStateTracker : NetworkBehaviour
     {
         #region Uncomment for child architecture guide
         // protected abstract void SetSingleton();

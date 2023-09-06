@@ -39,7 +39,6 @@ namespace HathoraNgo.Client
         private void togglePlayerOwnerObjs(bool _enable)
         {
             ownerObjContainer.SetActive(_enable);
-            HathoraLocalClientUiMgr.Singleton.gameObject.SetActive(_enable);
         }
     }
 }
