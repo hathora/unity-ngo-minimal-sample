@@ -1,7 +1,7 @@
 #!/bin/bash
 ###################################################################################################
 #
-# RunWslLinuxServer.sh - Runs 1 LinuxServer (via bash shell).
+# RunWslLinuxServer.sh - Runs 1 LinuxServer (via bash shell). v1.0.1
 #  By default, this works with default Unity `HathoraServerConfig` settings.
 #  See 'Networking.cs' for the main init.
 #
@@ -21,9 +21,11 @@
 #
 # -------------------------------------------------------------------------------------
 #
-# UNITY ARGS: 
-# -batchmode runs as a headless (dedicated) server
-# -nographics (requires -batchmode) runs without a GUI
+# UNITY ARGS:
+# -batchmode [REQUIRED] | Runs as a headless (dedicated) server
+# -nographics [REQUIRED] | Requires -batchmode - runs without a GUI
+# -log "./log.txt" | Saves logs to txt instead of tails in console
+#   ^ bug: The logs will print oddly at the top, but you'll still see the log
 # -> More @ https://docs.unity3d.com/Manual/PlayerCommandLineArguments.html 
 #
 # -------------------------------------------------------------------------------------
@@ -44,6 +46,9 @@ extra_unity_args=""
 hathora_args="-mode server"
 ###################################################################################################
 
+# Capture all remaining args to append later
+additional_args=("$@")
+
 # Check for -p HathoraProcessId arg
 while getopts ":p:" opt; do
   case ${opt} in
@@ -51,13 +56,28 @@ while getopts ":p:" opt; do
       HATHORA_PROCESS_ID=$OPTARG
       ;;
     \? )
-      echo "Invalid option: $OPTARG" 1>&2
+      additional_args+=("$OPTARG")
       ;;
     : )
       echo "Option $OPTARG requires an argument" 1>&2
       ;;
   esac
 done
+
+# Shift positional arguments consumed by getopts
+shift $((OPTIND - 1))
+
+# Add any remaining arguments to `additional_args`
+additional_args+=("$@")
+
+# Combine additional_args into a single string to append to unity_args
+extra_unity_args=""
+for arg in "${additional_args[@]}"; do
+    extra_unity_args+="$arg "
+done
+
+# Rm the trailing space
+extra_unity_args=${extra_unity_args::-1}
 
 export HATHORA_PROCESS_ID
 

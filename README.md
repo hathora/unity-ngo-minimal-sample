@@ -13,7 +13,7 @@ To just download and install the plugin, check out our [installation guide](http
 **Hathora Cloud Unity Plugin** includes:
 * Editor plugin to configure, build, and deploy your server directly from your Unity editor
 * Hathora Cloud C# SDK for programmatic integration
-* Demos directory with sample integrations with FishNet and Mirror networking solutions
+* HathoraNgo directory for NGO-specific demo implementations
 
 To learn more about Hathora Cloud, check out our [documentation page](https://hathora.dev/docs/).
 

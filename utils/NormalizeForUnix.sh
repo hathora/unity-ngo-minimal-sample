@@ -6,7 +6,7 @@
 #  (!) If you edit this script, run: `dos2unix ./normalize_for_unix.sh`
 #
 # --------------------------------------------------------------------------------
-# Created by dylan@hathora.dev @ 7/11/2023
+# Created by dylan@hathora.dev @ 7/11/2023, v1.0.1
 #################################################################################################
 
 # Check if dos2unix is installed

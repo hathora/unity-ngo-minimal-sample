@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Hathora.Cloud.Sdk.Client;
@@ -10,6 +11,7 @@ using Hathora.Cloud.Sdk.Model;
 using Hathora.Core.Scripts.Runtime.Client;
 using Hathora.Core.Scripts.Runtime.Client.Config;
 using Hathora.Core.Scripts.Runtime.Client.Models;
+using Hathora.Core.Scripts.Runtime.Common.Utils;
 using Hathora.Demos.Shared.Scripts.Client.Models;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -257,7 +259,16 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
             }
             finally
             {
-                hathoraClientSession.ServerConnectionInfo = connectionInfo;
+                // Convert an additional prop for IP (converted from host):
+                // Some services like NGO can't use host names
+                IPAddress ip = null;
+                string host = connectionInfo?.ExposedPort?.Host;
+                bool hasHost = !string.IsNullOrEmpty(host);
+                if (hasHost)
+                    ip = await HathoraUtils.ConvertHostToIpAddress(host);
+
+                hathoraClientSession.SetServerConnectionInfo(connectionInfo, _hostConvertedToIp: ip);
+   
                 OnGetActiveConnectionInfoDone(connectionInfo);
             }
             

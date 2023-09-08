@@ -1,6 +1,7 @@
 // Created by dylan@hathora.dev
 
 using System.Collections.Generic;
+using System.Net;
 using Hathora.Cloud.Sdk.Model;
 using UnityEngine;
 
@@ -32,7 +33,26 @@ namespace Hathora.Core.Scripts.Runtime.Client
         /// The last known ServerConnectionInfo (ip/host, port, protocol).
         /// Unity ClientAddress == ExposedPort.Host
         /// </summary>
-        public ConnectionInfoV2 ServerConnectionInfo { get; set; }
+        public ConnectionInfoV2 ServerConnectionInfo { get; private set; }
+        
+        /// <summary>
+        /// ConnectionInfoV2 only contains host:port. Some services require an IP, like NGO.
+        /// - Set at SetServerConnectionInfo().
+        /// </summary>
+        public IPAddress ServerConnectionIpAddress { get; private set; }
+
+        /// <param name="_serverConnectionInfo">From Hathora</param>
+        /// <param name="_hostConvertedToIp">
+        /// From DNS namespace, converted from `ConnectionInfo.ExposedPort.Host`
+        /// </param>
+        public void SetServerConnectionInfo(
+            ConnectionInfoV2 _serverConnectionInfo, 
+            IPAddress _hostConvertedToIp)
+        {
+            this.ServerConnectionInfo = _serverConnectionInfo;
+            this.ServerConnectionIpAddress = _hostConvertedToIp;
+
+        }
 
         /// <summary>Validates host + port</summary>
         /// <returns></returns>
@@ -40,7 +60,8 @@ namespace Hathora.Core.Scripts.Runtime.Client
             !string.IsNullOrEmpty(ServerConnectionInfo?.ExposedPort?.Host) && 
             ServerConnectionInfo?.ExposedPort?.Port > 0;
         
-        public string GetServerInfoIpPort() => 
+        /// <returns>eg: "1.proxy.hathora.dev:12345"</returns>
+        public string GetServerInfoHostPort() => 
             $"{ServerConnectionInfo?.ExposedPort.Host}:{ServerConnectionInfo?.ExposedPort.Port}";
 
         
