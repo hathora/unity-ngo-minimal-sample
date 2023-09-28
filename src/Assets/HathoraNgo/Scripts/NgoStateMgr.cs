@@ -185,7 +185,7 @@ namespace HathoraNgo
         /// </returns>
         public bool StartClient()
         {
-            string logPrefix = $"[{nameof(NgoStateMgr)}.{nameof(StartClient)}";
+            string logPrefix = $"[{nameof(NgoStateMgr)}.{nameof(StartClient)}]";
             Debug.Log($"{logPrefix} Start");
             
             // Validate
@@ -196,7 +196,7 @@ namespace HathoraNgo
             // Log "host:port (transport)" -> Connect using NetworkManager settings
             string ipPort = $"{transport.ConnectionData.Address}:{transport.ConnectionData.Port}";
             string transportName = transport.GetType().Name;
-            Debug.Log($"[{logPrefix} Connecting to `{ipPort}` via`{transportName}` transport");
+            Debug.Log($"{logPrefix} Connecting to `{ipPort}` via`{transportName}` transport");
             
             base.OnClientConnecting(); // => callback @ OnClientConected() || OnLocalStartClientFail()
             bool startedConnection = netMgr.StartClient();
