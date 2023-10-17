@@ -37,7 +37,7 @@ namespace HathoraNgo.Client
         {
             setSingleton();
             
-            Debug.Log($"[{nameof(HathoraLocalClientUiMgr)}] {nameof(Awake)} - Setting !Active until connected.");
+            Debug.Log($"[{nameof(NgoLocalClientUiMgr)}] {nameof(Awake)} - Setting !Active until connected.");
         }
 
         private void Start()
@@ -57,7 +57,7 @@ namespace HathoraNgo.Client
             if (Singleton != null)
             {
                 Destroy(gameObject);
-                throw new Exception($"[{nameof(HathoraLocalClientUiMgr)}.{nameof(setSingleton)}] " +
+                throw new Exception($"[{nameof(NgoLocalClientUiMgr)}.{nameof(setSingleton)}] " +
                     "Error: Destroying dupe");
             }
             

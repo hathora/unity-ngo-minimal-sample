@@ -1,8 +1,8 @@
 // Created by dylan@hathora.dev
 
 using System.Collections.Generic;
-using System.Net;
-using Hathora.Cloud.Sdk.Model;
+using HathoraCloud;
+using HathoraCloud.Models.Shared;
 using UnityEngine;
 
 namespace Hathora.Core.Scripts.Runtime.Client
@@ -23,36 +23,17 @@ namespace Hathora.Core.Scripts.Runtime.Client
         public bool IsAuthed => !string.IsNullOrEmpty(PlayerAuthToken);
 
         /// <summary>The last known Lobby.</summary>
-        public Lobby Lobby { get; set; }
+        public LobbyV3 Lobby { get; set; }
         
         /// <summary>The last known List of Lobby for a server browser. </summary>
-        public List<Lobby> Lobbies { get; set; }
+        public List<LobbyV3> Lobbies { get; set; }
         public string RoomId => Lobby?.RoomId;
 
         /// <summary>
         /// The last known ServerConnectionInfo (ip/host, port, protocol).
         /// Unity ClientAddress == ExposedPort.Host
         /// </summary>
-        public ConnectionInfoV2 ServerConnectionInfo { get; private set; }
-        
-        /// <summary>
-        /// ConnectionInfoV2 only contains host:port. Some services require an IP, like NGO.
-        /// - Set at SetServerConnectionInfo().
-        /// </summary>
-        public IPAddress ServerConnectionIpAddress { get; private set; }
-
-        /// <param name="_serverConnectionInfo">From Hathora</param>
-        /// <param name="_hostConvertedToIp">
-        /// From DNS namespace, converted from `ConnectionInfo.ExposedPort.Host`
-        /// </param>
-        public void SetServerConnectionInfo(
-            ConnectionInfoV2 _serverConnectionInfo, 
-            IPAddress _hostConvertedToIp)
-        {
-            this.ServerConnectionInfo = _serverConnectionInfo;
-            this.ServerConnectionIpAddress = _hostConvertedToIp;
-
-        }
+        public ConnectionInfoV2 ServerConnectionInfo { get; set; }
 
         /// <summary>Validates host + port</summary>
         /// <returns></returns>
@@ -60,8 +41,7 @@ namespace Hathora.Core.Scripts.Runtime.Client
             !string.IsNullOrEmpty(ServerConnectionInfo?.ExposedPort?.Host) && 
             ServerConnectionInfo?.ExposedPort?.Port > 0;
         
-        /// <returns>eg: "1.proxy.hathora.dev:12345"</returns>
-        public string GetServerInfoHostPort() => 
+        public string GetServerInfoIpPort() => 
             $"{ServerConnectionInfo?.ExposedPort.Host}:{ServerConnectionInfo?.ExposedPort.Port}";
 
         
@@ -83,14 +63,10 @@ namespace Hathora.Core.Scripts.Runtime.Client
             Singleton = this;
         }
 
-        /// <summary>
-        /// For a new Session, we simply update the PlayerAuthToken.
-        /// </summary>
-        /// <param name="playerAuthToken"></param>
-        public void InitNetSession(string playerAuthToken)
-        {
-            this.PlayerAuthToken = playerAuthToken;
-        }
+        /// <summary>For a new Session, we simply update the PlayerAuthToken.</summary>
+        /// <param name="_playerAuthToken"></param>
+        public void InitNetSession(string _playerAuthToken) =>
+            this.PlayerAuthToken = _playerAuthToken;
         #endregion // Init
     }
 }

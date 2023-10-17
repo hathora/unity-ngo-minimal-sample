@@ -1,5 +1,8 @@
 // Created by dylan@hathora.dev
 
+using System.Net;
+using System.Threading.Tasks;
+using Hathora.Core.Scripts.Runtime.Common.Utils;
 using Hathora.Demos.Shared.Scripts.Common;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -68,10 +71,6 @@ namespace HathoraNgo
             netMgr.OnClientConnectedCallback += OnClientStartingWrapper;
             netMgr.OnClientStopped += OnClientStoppedWrapper;
             netMgr.OnClientDisconnectCallback += OnClientStoppedWrapper;
-            
-            // Server events >> In order of events fired
-            netMgr.OnServerStarted += OnServerStarted;
-            netMgr.OnServerStopped += OnServerStopped;
         }
         
         /// <summary>Wrapper needs to add `friendlyReason` err string</summary>
@@ -135,7 +134,7 @@ namespace HathoraNgo
         /// <returns>
         /// startedConnection; to *attempt* the connection (isValid pre-connect vals); we're not connected yet.
         /// </returns>
-        public bool StartClient(string _hostPort)
+        public async Task<bool> StartClient(string _hostPort)
         {
             // Wrong overload?
             if (string.IsNullOrEmpty(_hostPort))
@@ -144,8 +143,8 @@ namespace HathoraNgo
             string logPrefix = $"[{nameof(NgoStateMgr)}] {nameof(StartClient)}]"; 
             Debug.Log($"{logPrefix} Start");
             
-            (string hostNameOrIp, ushort port) hostPortContainer = SplitPortFromHostOrIp(_hostPort);
-            bool hasHost = !string.IsNullOrEmpty(hostPortContainer.hostNameOrIp);
+            (string hostName, ushort port) hostPortContainer = SplitPortFromHostOrIp(_hostPort);
+            bool hasHost = !string.IsNullOrEmpty(hostPortContainer.hostName);
             bool hasPort = hostPortContainer.port > 0;
 
             // Start Ngo Client via selected Transport
@@ -163,10 +162,15 @@ namespace HathoraNgo
             {
                 // Set custom host:port 1st
                 Debug.Log($"{logPrefix} w/Custom hostPort: " +
-                    $"`{hostPortContainer.hostNameOrIp}:{hostPortContainer.port}`");
+                    $"`{hostPortContainer.hostName}:{hostPortContainer.port}`");
+                
+                // Hathora provides hostname, need to convert to IP address
+                IPAddress ip = null;
+                string host = hostPortContainer.hostName;
+                ip = await HathoraUtils.ConvertHostToIpAddress(host);
 
                 // (!) Unity NGO specifically requires an IP; not a host
-                transport.ConnectionData.Address = hostPortContainer.hostNameOrIp;
+                transport.ConnectionData.Address = ip.ToString();
                 transport.ConnectionData.Port = hostPortContainer.port;
             }
             
@@ -211,10 +215,10 @@ namespace HathoraNgo
         /// <returns>
         /// startedConnection; to *attempt* the connection (isValid pre-connect vals); we're not connected yet.
         /// </returns>
-        public bool StartClientFromHathoraLobbySession()
+        public async Task<bool> StartClientFromHathoraLobbySession()
         {
-            string ipPort = GetHathoraSessionHostPort(_useIpInsteadOfHost: true); // NGO will reject host names
-            return StartClient(ipPort);
+            string hostPort = GetHathoraSessionHostPort(); // NGO will reject host names
+            return await StartClient(hostPort);
         }
         
         /// <summary>Starts a NetworkManager Client.</summary>
@@ -286,10 +290,6 @@ namespace HathoraNgo
             netMgr.OnClientStopped -= OnClientStoppedWrapper;
             netMgr.OnClientConnectedCallback -= OnClientStartingWrapper;
             netMgr.OnClientDisconnectCallback -= OnClientStoppedWrapper;
-            
-            // Server events >> TODO
-            netMgr.OnServerStarted -= OnServerStarted;
-            netMgr.OnServerStopped -= OnServerStopped;
         }
         #endregion // Cleanup
     }
