@@ -10,7 +10,7 @@ namespace HathoraNgo.Client
     /// - UI OnEvent entry points from Buttons start here.
     /// - Base contains UI container and SDK demo actions; we override to send to stateMgr
     /// </summary>
-    public class NgoHathoraSdkDemoUi : HathoraSdkDemoUi
+    public class NgoHathoraSdkDemoUi : HathoraClientMgrDemoUi
     {
         private static NgoStateMgr stateMgr => 
             NgoStateMgr.Singleton;

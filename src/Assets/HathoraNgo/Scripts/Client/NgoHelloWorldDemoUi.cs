@@ -3,6 +3,7 @@
 using System.Text.RegularExpressions;
 using Hathora.Core.Scripts.Runtime.Common.Utils;
 using Hathora.Demos.Shared.Scripts.Client.ClientMgr;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace HathoraNgo.Client
@@ -11,7 +12,7 @@ namespace HathoraNgo.Client
     /// [HELLO WORLD DEMO] Handles UI clicks -> Calls stateMgr events.
     /// - Base logs UI interactions / handles WebGL workarounds.
     /// </summary>
-    public class NgoHelloWorldDemoUi : HathoraHelloWorldDemoUi
+    public class NgoHelloWorldDemoUi : HathoraClientMgrDemoUi
     {
         private static NgoStateMgr stateMgr => 
             NgoStateMgr.Singleton;
@@ -30,7 +31,10 @@ namespace HathoraNgo.Client
         public override void OnStartClientBtnClick(string _hostPortOverride = null)
         {
             // We want to override hostPort from the input field - np if null
-            _hostPortOverride = ClientConnectInputField.text.Trim();
+            Debug.Log(HelloWorldDemoUi);
+            Debug.Log(HelloWorldDemoUi.ClientConnectInputField);
+            Debug.Log(HelloWorldDemoUi.ClientConnectInputField.text);
+            _hostPortOverride = HelloWorldDemoUi.ClientConnectInputField.text.Trim();
             
             // Cleanup, if empty string, since we have 2 overloads later
             if (_hostPortOverride == "")
