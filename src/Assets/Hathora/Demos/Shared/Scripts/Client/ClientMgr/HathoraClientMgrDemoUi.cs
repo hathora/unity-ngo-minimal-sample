@@ -221,7 +221,8 @@ namespace Hathora.Demos.Shared.Scripts.Client.ClientMgr
             {
                 await ClientMgr.CreateLobbyAsync(
                     roomConfig, 
-                    region, // TODO: Get from UI
+                    _region: region, // TODO: Get from UI
+                    _shortCode: null,
                     _roomId: null,
                     LobbyVisibility.Public); // TODO: Get from UI
             }
