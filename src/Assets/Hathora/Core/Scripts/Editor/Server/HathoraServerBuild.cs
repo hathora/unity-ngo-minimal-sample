@@ -244,6 +244,9 @@ namespace Hathora.Core.Scripts.Editor.Server
                 subtarget = (int)StandaloneBuildSubtarget.Server
             };
 
+            // Ensure build is a headless Linux server (Important: triggers compile as UNITY_SERVER)
+            EditorUserBuildSettings.standaloneBuildSubtarget = StandaloneBuildSubtarget.Server;
+
             return buildPlayerOpts;
         }
 
